@@ -1,10 +1,11 @@
 let playerWin = 0;
 let pcWin = 0;
-
+let playerChoice = '';
+let pcChoice= '';
+const container = document.querySelector('.container');
 
 function getComputerChoice() {
     let numChoice = Math.random();
-    let pcChoice;
     if (numChoice < 0.333){
         pcChoice = 'ROCK';
     }
@@ -17,21 +18,32 @@ function getComputerChoice() {
     return pcChoice;
 }
 
-function getPlayerChoice(){
-    return prompt('Choose rock, paper or scissors.').toUpperCase();
-}
-
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == 'ROCK'){
         if (computerSelection == 'ROCK'){
-            console.log('It\'s a draw');
+            const divPC = document.createElement('div');
+            divPC.textContent = 'PC chose rock'; 
+            container.appendChild(divPC)
+            const divResult = document.createElement('div');
+            divResult.textContent = 'Draw';
+            container.appendChild(divResult);
         }
         else if (computerSelection == 'PAPER'){
-            console.log('Computer wins');
+            const divPC = document.createElement('div');
+            divPC.textContent = 'PC chose paper'; 
+            container.appendChild(divPC);
+            const divResult = document.createElement('div');
+            divResult.textContent = 'PC wins';
+            container.appendChild(divResult);
             pcWin++;
         }
-        else{
-            console.log('Player wins');
+        else if (computerSelection == 'SCISSORS'){
+            const divPC = document.createElement('div');
+            divPC.textContent = 'PC chose scissors'; 
+            container.appendChild(divPC);
+            const divResult = document.createElement('div');
+            divResult.textContent = 'Player wins';
+            container.appendChild(divResult);
             playerWin++;
         }
     }
@@ -66,16 +78,9 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 
-function game(){
-    for (let i = 1; i <=5; i++){
-        playRound(getPlayerChoice(),getComputerChoice());
-    }
-    if (playerWin > pcWin){
-        console.log('Player won');
-    }
-    else if (pcWin > playerWin){
-        console.log('Computer won');
-    }
-    else console.log('Nobody won');
-}
-game();
+
+const btnRock = document.querySelector('.btn-rock');
+btnRock.addEventListener('click', () => {playerChoice = 'ROCK'
+    playRound(playerChoice, getComputerChoice());
+    console.log(pcChoice);
+});
