@@ -49,27 +49,58 @@ function playRound(playerSelection, computerSelection) {
     }
     else if (playerSelection == 'PAPER'){
         if (computerSelection == 'PAPER'){
-            console.log('It\'s a draw');
+            const divPC = document.createElement('div');
+            divPC.textContent = 'PC chose paper'; 
+            container.appendChild(divPC);
+            const divResult = document.createElement('div');
+            divResult.textContent = 'Draw';
+            container.appendChild(divResult);
         }
         else if (computerSelection == 'SCISSORS'){
-            console.log('Computer wins');
+            const divPC = document.createElement('div');
+            divPC.textContent = 'PC chose scissors'; 
+            container.appendChild(divPC);
+            const divResult = document.createElement('div');
+            divResult.textContent = 'PC wins';
+            container.appendChild(divResult);
             pcWin++;
+            
         }
-        else{
-            console.log('Player wins');
+        else if (computerSelection == 'ROCK') {
+            const divPC = document.createElement('div');
+            divPC.textContent = 'PC chose rock'; 
+            container.appendChild(divPC)
+            const divResult = document.createElement('div');
+            divResult.textContent = 'Player wins';
+            container.appendChild(divResult);
             playerWin++;
         }
     }
     else if (playerSelection == 'SCISSORS'){
         if (computerSelection == 'SCISSORS'){
-            console.log('It\'s a draw');
+            const divPC = document.createElement('div');
+            divPC.textContent = 'PC chose scissors'; 
+            container.appendChild(divPC);
+            const divResult = document.createElement('div');
+            divResult.textContent = 'Draw';
+            container.appendChild(divResult);
         }
         else if (computerSelection == 'ROCK'){
-            console.log('Computer wins');
+            const divPC = document.createElement('div');
+            divPC.textContent = 'PC chose rock'; 
+            container.appendChild(divPC)
+            const divResult = document.createElement('div');
+            divResult.textContent = 'PC wins';
+            container.appendChild(divResult);
             pcWin++;
         }
-        else{
-            console.log('Player wins');
+        else if (computerSelection == 'PAPER'){
+            const divPC = document.createElement('div');
+            divPC.textContent = 'PC chose paper'; 
+            container.appendChild(divPC);
+            const divResult = document.createElement('div');
+            divResult.textContent = 'Player wins';
+            container.appendChild(divResult);
             playerWin++;
         }
     }
@@ -81,6 +112,18 @@ function playRound(playerSelection, computerSelection) {
 
 const btnRock = document.querySelector('.btn-rock');
 btnRock.addEventListener('click', () => {playerChoice = 'ROCK'
+    playRound(playerChoice, getComputerChoice());
+    console.log(pcChoice);
+});
+
+const btnPaper = document.querySelector('.btn-paper');
+btnPaper.addEventListener('click', () => {playerChoice = 'PAPER'
+    playRound(playerChoice, getComputerChoice());
+    console.log(pcChoice);
+});
+
+const btnScissors = document.querySelector('.btn-scissors');
+btnScissors.addEventListener('click', () => {playerChoice = 'SCISSORS'
     playRound(playerChoice, getComputerChoice());
     console.log(pcChoice);
 });
